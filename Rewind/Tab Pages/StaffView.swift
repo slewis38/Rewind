@@ -1,30 +1,75 @@
-//
-//  StaffView.swift
-//  Rewind
-//
-//  Created by Sean Lewis on 12/8/25.
-//
-
 import SwiftUI
 
 struct StaffView: View {
+    // Example placeholder teacher data
+    struct Teacher: Identifiable {
+        let id = UUID()
+        let name: String
+    }
+    
+    let teachers = [
+        Teacher(name: "Mr. Smith"),
+        Teacher(name: "Ms. Johnson"),
+        Teacher(name: "Mrs. Lee"),
+        Teacher(name: "Mr. Brown"),
+        Teacher(name: "Ms. Davis"),
+        Teacher(name: "Mr. Wilson"),
+        Teacher(name: "Mrs. Garcia"),
+        Teacher(name: "Ms. Martinez"),
+        Teacher(name: "Mr. Taylor"),
+        Teacher(name: "Mr. Smith"),
+        Teacher(name: "Ms. Johnson"),
+        Teacher(name: "Mrs. Lee"),
+        Teacher(name: "Mr. Brown"),
+        Teacher(name: "Ms. Davis"),
+        Teacher(name: "Mr. Wilson"),
+        Teacher(name: "Mrs. Garcia"),
+        Teacher(name: "Ms. Martinez"),
+        Teacher(name: "Mr. Taylor"),
+        Teacher(name: "Mr. Smith"),
+        Teacher(name: "Ms. Johnson"),
+        Teacher(name: "Mrs. Lee"),
+        Teacher(name: "Mr. Brown"),
+        Teacher(name: "Ms. Davis"),
+        Teacher(name: "Mr. Wilson"),
+        Teacher(name: "Mrs. Garcia"),
+        Teacher(name: "Ms. Martinez"),
+        Teacher(name: "Mr. Taylor"),
+        Teacher(name: "Mr. Smith"),
+        Teacher(name: "Ms. Johnson"),
+        Teacher(name: "Mrs. Lee"),
+        Teacher(name: "Mr. Brown"),
+        Teacher(name: "Ms. Davis"),
+        Teacher(name: "Mr. Wilson"),
+        Teacher(name: "Mrs. Garcia"),
+        Teacher(name: "Ms. Martinez"),
+        Teacher(name: "Mr. Taylor"),
+        Teacher(name: "Mrs. Anderson")
+    ]
+    
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             
-            VStack(spacing: 20) {
-                Text("Staff Directory")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .bold()
-                
-                Text("Browse teachers, administrators, and faculty.")
-                    .foregroundColor(.white.opacity(0.8))
-                
-                Image(systemName: "person.2.crop.square.stack.fill")
-                    .font(.system(size: 60))
-                    .foregroundColor(.white)
-                    .padding(.top, 30)
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(teachers) { teacher in
+                        VStack {
+                            Circle()
+                                .fill(Color.gray)
+                                .frame(width: 80, height: 80)
+                            Text(teacher.name)
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+                .padding()
             }
         }
     }
